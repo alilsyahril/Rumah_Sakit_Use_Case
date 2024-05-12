@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PivotTable.js</title>
+
+        <!-- external libs from cdnjs -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/pivot.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/pivot.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/d3_renderers.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/c3_renderers.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/export_renderers.min.js"></script>
+
+        <style>
+            body {font-family: Verdana;}
+            .node {
+              border: solid 1px white;
+              font: 10px sans-serif;
+              line-height: 12px;
+              overflow: hidden;
+              position: absolute;
+              text-indent: 2px;
+            }
+            .c3-line, .c3-focused {stroke-width: 3px !important;}
+            .c3-bar {stroke: white !important; stroke-width: 1;}
+            .c3 text { font-size: 12px; color: grey;}
+            .tick line {stroke: white;}
+            .c3-axis path {stroke: grey;}
+            .c3-circle { opacity: 1 !important; }
+            .c3-xgrid-focus {visibility: hidden !important;}
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function(){
+                if(window.location != window.parent.location)
+                    $("<a>", {target:"_blank", href:""})
+                        .text("[pop out]").prependTo($("body"));
+
+                $("#output").pivotUI(
+                    $.csv.toArrays($("#output").text()),
+                    $.extend({
+                        renderers: $.extend(
+                            $.pivotUtilities.renderers,
+                            $.pivotUtilities.c3_renderers,
+                            $.pivotUtilities.d3_renderers,
+                            $.pivotUtilities.export_renderers
+                            ),
+                        hiddenAttributes: [""]
+                    }, {})
+                ).show();
+             });
+        </script>
+        <div id="output" style="display: none;">,Tanggal Jadwal Kunjungan,Poli,Jumlah Kunjungan,Hari
+0,2023-05-02,ANAK (UMUR DIBAWAH 5 TAHUN),11,Tuesday
+1,2023-05-02,ILI (BATUK PILEK DEMAM),19,Tuesday
+2,2023-05-02,IMUNISASI,5,Tuesday
+3,2023-05-02,KEUR (SURAT SEHAT),2,Tuesday
+4,2023-05-02,KONSULTASI,1,Tuesday
+5,2023-05-02,LABORATORIUM,26,Tuesday
+6,2023-05-02,LANSIA (60thn keatas),1,Tuesday
+7,2023-05-02,POLI GIGI DAN MULUT,12,Tuesday
+8,2023-05-02,POLI TB & PARU,2,Tuesday
+9,2023-05-02,PTM (KONTROL GULA/DARAH TINGGI),28,Tuesday
+10,2023-05-02,RAWAT DARURAT,1,Tuesday
+11,2023-05-02,SANITASI,1,Tuesday
+12,2023-05-02,UMUM (Bukan untuk bapil),33,Tuesday
+13,2023-05-03,ANAK (UMUR DIBAWAH 5 TAHUN),5,Wednesday
+14,2023-05-03,ILI (BATUK PILEK DEMAM),21,Wednesday
+15,2023-05-03,KIA (PERIKSA HAMIL),18,Wednesday
+16,2023-05-03,KONSULTASI,1,Wednesday
+17,2023-05-03,LABORATORIUM,10,Wednesday
+18,2023-05-03,LANSIA (60thn keatas),13,Wednesday
+19,2023-05-03,POLI GIGI DAN MULUT,4,Wednesday
+20,2023-05-03,POLI TB & PARU,2,Wednesday
+21,2023-05-03,UMUM (Bukan untuk bapil),29,Wednesday
+22,2023-05-04,ANAK (UMUR DIBAWAH 5 TAHUN),5,Thursday
+23,2023-05-04,ILI (BATUK PILEK DEMAM),14,Thursday
+24,2023-05-04,IMUNISASI,1,Thursday
+25,2023-05-04,KEUR (SURAT SEHAT),5,Thursday
+26,2023-05-04,KIA (PERIKSA HAMIL),4,Thursday
+27,2023-05-04,POLI GIGI DAN MULUT,12,Thursday
+28,2023-05-04,POLI KB,2,Thursday
+29,2023-05-04,POLI TB & PARU,4,Thursday
+30,2023-05-04,PTM (KONTROL GULA/DARAH TINGGI),21,Thursday
+31,2023-05-04,UMUM (Bukan untuk bapil),23,Thursday
+32,2023-05-05,ANAK (UMUR DIBAWAH 5 TAHUN),4,Friday
+33,2023-05-05,BIDAN PRAKTEK,1,Friday
+34,2023-05-05,ILI (BATUK PILEK DEMAM),18,Friday
+35,2023-05-05,IMUNISASI,2,Friday
+36,2023-05-05,KEUR (SURAT SEHAT),1,Friday
+37,2023-05-05,LABORATORIUM,2,Friday
+38,2023-05-05,LANSIA (60thn keatas),4,Friday
+39,2023-05-05,POLI GIGI DAN MULUT,11,Friday
+40,2023-05-05,POLI TB & PARU,2,Friday
+41,2023-05-05,POSYANDU,1,Friday
+42,2023-05-05,SANITASI,3,Friday
+43,2023-05-05,UMUM (Bukan untuk bapil),15,Friday
+44,2023-05-06,ANAK (UMUR DIBAWAH 5 TAHUN),4,Saturday
+45,2023-05-06,BIDAN PRAKTEK,1,Saturday
+46,2023-05-06,ILI (BATUK PILEK DEMAM),13,Saturday
+47,2023-05-06,JIWA,1,Saturday
+48,2023-05-06,KEUR (SURAT SEHAT),2,Saturday
+49,2023-05-06,LABORATORIUM,1,Saturday
+50,2023-05-06,LANSIA (60thn keatas),5,Saturday
+51,2023-05-06,POLI GIGI DAN MULUT,12,Saturday
+52,2023-05-06,POLI KB,4,Saturday
+53,2023-05-06,POLI TB & PARU,2,Saturday
+54,2023-05-06,PTM (KONTROL GULA/DARAH TINGGI),2,Saturday
+55,2023-05-06,UMUM (Bukan untuk bapil),23,Saturday
+56,2023-05-07,RAWAT DARURAT,1,Sunday
+57,2023-05-08,ANAK (UMUR DIBAWAH 5 TAHUN),8,Monday
+58,2023-05-08,CATEN (PRA NIKAH),1,Monday
+59,2023-05-08,ILI (BATUK PILEK DEMAM),20,Monday
+60,2023-05-08,KEUR (SURAT SEHAT),3,Monday
+61,2023-05-08,KIA (PERIKSA HAMIL),15,Monday
+62,2023-05-08,KONSULTASI,1,Monday
+63,2023-05-08,LABORATORIUM,3,Monday
+64,2023-05-08,LANSIA (60thn keatas),9,Monday
+65,2023-05-08,POLI GIGI DAN MULUT,6,Monday
+66,2023-05-08,POLI TB & PARU,3,Monday
+67,2023-05-08,POSYANDU,1,Monday
+68,2023-05-08,RAWAT INAP PONED,1,Monday
+69,2023-05-08,SANITASI,1,Monday
+70,2023-05-08,UMUM (Bukan untuk bapil),33,Monday
+71,2023-05-09,ANAK (UMUR DIBAWAH 5 TAHUN),9,Tuesday
+72,2023-05-09,ILI (BATUK PILEK DEMAM),22,Tuesday
+73,2023-05-09,IMUNISASI,5,Tuesday
+74,2023-05-09,KEUR (SURAT SEHAT),5,Tuesday
+75,2023-05-09,LABORATORIUM,17,Tuesday
+76,2023-05-09,POLI GIGI DAN MULUT,9,Tuesday
+77,2023-05-09,PTM (KONTROL GULA/DARAH TINGGI),23,Tuesday
+78,2023-05-09,RAWAT DARURAT,2,Tuesday
+79,2023-05-09,UMUM (Bukan untuk bapil),30,Tuesday
+80,2023-05-10,ANAK (UMUR DIBAWAH 5 TAHUN),9,Wednesday
+81,2023-05-10,ILI (BATUK PILEK DEMAM),18,Wednesday
+82,2023-05-10,KEUR (SURAT SEHAT),4,Wednesday
+83,2023-05-10,KIA (PERIKSA HAMIL),14,Wednesday
+84,2023-05-10,LABORATORIUM,4,Wednesday
+85,2023-05-10,LANSIA (60thn keatas),8,Wednesday
+86,2023-05-10,POLI GIGI DAN MULUT,4,Wednesday
+87,2023-05-10,POLI TB & PARU,1,Wednesday
+88,2023-05-10,UMUM (Bukan untuk bapil),25,Wednesday
+89,2023-05-11,ANAK (UMUR DIBAWAH 5 TAHUN),7,Thursday
+90,2023-05-11,ILI (BATUK PILEK DEMAM),22,Thursday
+91,2023-05-11,KEUR (SURAT SEHAT),4,Thursday
+92,2023-05-11,LABORATORIUM,19,Thursday
+93,2023-05-11,POLI GIGI DAN MULUT,7,Thursday
+94,2023-05-11,POLI TB & PARU,2,Thursday
+95,2023-05-11,PTM (KONTROL GULA/DARAH TINGGI),28,Thursday
+96,2023-05-11,UMUM (Bukan untuk bapil),18,Thursday
+97,2023-05-12,ANAK (UMUR DIBAWAH 5 TAHUN),6,Friday
+98,2023-05-12,ILI (BATUK PILEK DEMAM),11,Friday
+99,2023-05-12,KEUR (SURAT SEHAT),7,Friday
+100,2023-05-12,LABORATORIUM,3,Friday
+101,2023-05-12,LANSIA (60thn keatas),8,Friday
+102,2023-05-12,POLI COVID19,1,Friday
+103,2023-05-12,POLI GIGI DAN MULUT,6,Friday
+104,2023-05-12,POLI TB & PARU,1,Friday
+105,2023-05-12,POSYANDU,1,Friday
+106,2023-05-12,UMUM (Bukan untuk bapil),19,Friday
+107,2023-05-13,ANAK (UMUR DIBAWAH 5 TAHUN),7,Saturday
+108,2023-05-13,ILI (BATUK PILEK DEMAM),13,Saturday
+109,2023-05-13,JIWA,1,Saturday
+110,2023-05-13,KEUR (SURAT SEHAT),1,Saturday
+111,2023-05-13,KIA (PERIKSA HAMIL),2,Saturday
+112,2023-05-13,LABORATORIUM,2,Saturday
+113,2023-05-13,LANSIA (60thn keatas),6,Saturday
+114,2023-05-13,POLI COVID19,1,Saturday
+115,2023-05-13,POLI GIGI DAN MULUT,9,Saturday
+116,2023-05-13,POLI KB,4,Saturday
+117,2023-05-13,POLI TB & PARU,2,Saturday
+118,2023-05-13,PTM (KONTROL GULA/DARAH TINGGI),1,Saturday
+119,2023-05-13,UMUM (Bukan untuk bapil),31,Saturday
+</div>
+    </body>
+</html>
